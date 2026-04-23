@@ -1,0 +1,453 @@
+from pathlib import Path
+
+html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ALEX: Choosing the Right Qualitative Research Method</title>
+  <style>
+    :root{
+      --bg:#f7f8fc;
+      --card:#ffffff;
+      --ink:#1f2937;
+      --muted:#5b6472;
+      --accent:#304ffe;
+      --accent-2:#0f766e;
+      --border:#d9deea;
+      --shadow:0 10px 30px rgba(26,35,68,.08);
+      --code-bg:#0f172a;
+      --code-ink:#e5eefc;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--ink);
+      background:linear-gradient(180deg,#eef2ff 0%, var(--bg) 180px);
+      line-height:1.6;
+    }
+    .wrap{
+      max-width:1000px;
+      margin:0 auto;
+      padding:40px 20px 64px;
+    }
+    .hero{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+      padding:32px;
+      margin-bottom:24px;
+    }
+    .eyebrow{
+      display:inline-block;
+      font-size:.85rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0 0 8px;
+      font-size:clamp(2rem, 4vw, 3.2rem);
+      line-height:1.1;
+    }
+    .subtitle{
+      color:var(--muted);
+      font-size:1.05rem;
+      max-width:760px;
+      margin:0;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+      margin-bottom:24px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:1.35rem;
+    }
+    ol, ul{padding-left:1.25rem; margin:0}
+    li + li{margin-top:8px}
+    .llm-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--border);
+      background:#f8fbff;
+      color:var(--ink);
+      padding:10px 14px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:600;
+      transition:.18s ease;
+    }
+    .pill:hover{
+      transform:translateY(-1px);
+      border-color:#b8c4ff;
+      background:#eef2ff;
+    }
+    .prompt-card{
+      background:var(--code-bg);
+      color:var(--code-ink);
+      border-radius:20px;
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .prompt-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+      flex-wrap:wrap;
+    }
+    .prompt-header h2{
+      color:#fff;
+      margin:0;
+    }
+    .btn{
+      border:none;
+      background:var(--accent);
+      color:#fff;
+      font-weight:700;
+      padding:11px 16px;
+      border-radius:12px;
+      cursor:pointer;
+      transition:.18s ease;
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .btn.secondary{
+      background:var(--accent-2);
+    }
+    pre{
+      white-space:pre-wrap;
+      word-wrap:break-word;
+      margin:0;
+      font-size:.95rem;
+      line-height:1.55;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      max-height:900px;
+      overflow:auto;
+      padding-right:8px;
+    }
+    .footer{
+      margin-top:24px;
+      color:var(--muted);
+      font-size:.95rem;
+      text-align:center;
+    }
+    .tip{
+      background:#f0fdf4;
+      border:1px solid #bbf7d0;
+      color:#14532d;
+      border-radius:16px;
+      padding:14px 16px;
+      margin-top:16px;
+    }
+    .small{
+      font-size:.92rem;
+      color:var(--muted);
+    }
+    @media (max-width: 800px){
+      .grid{grid-template-columns:1fr}
+      .hero, .card, .prompt-card{padding:20px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="eyebrow">Presentation ALEX</div>
+      <h1>Choosing the Right Qualitative Research Method</h1>
+      <p class="subtitle">
+        Use this ALEX during the presentation to practice selecting the best qualitative research design
+        based on a study’s <strong>unit of analysis</strong> and <strong>desired research outcome</strong>.
+      </p>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Directions</h2>
+        <ol>
+          <li>Click <strong>Copy Prompt</strong> below.</li>
+          <li>Open your preferred large language model.</li>
+          <li>Paste the prompt into a <strong>new chat</strong>.</li>
+          <li>Answer the personalization questions so the scenarios match your role or interests.</li>
+          <li>Work through the method-selection scenarios one at a time.</li>
+          <li>Keep your transcript open in case you want to discuss your results afterward.</li>
+        </ol>
+
+        <div class="tip">
+          <strong>Tip:</strong> Don’t ask the model to skip ahead. The exercise is designed to help you
+          reason through each case before seeing the answer.
+        </div>
+
+        <p class="small" style="margin-top:16px;">
+          Suggested platforms:
+        </p>
+        <div class="llm-links">
+          <a class="pill" href="https://chatgpt.com" target="_blank" rel="noopener noreferrer">ChatGPT</a>
+          <a class="pill" href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a>
+          <a class="pill" href="https://gemini.google.com" target="_blank" rel="noopener noreferrer">Gemini</a>
+          <a class="pill" href="https://www.perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity</a>
+          <a class="pill" href="https://copilot.microsoft.com" target="_blank" rel="noopener noreferrer">Copilot</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>What This ALEX Covers</h2>
+        <ul>
+          <li><strong>Narrative:</strong> individual stories</li>
+          <li><strong>Phenomenology:</strong> shared lived experience</li>
+          <li><strong>Grounded Theory:</strong> theory development about a process or action</li>
+          <li><strong>Ethnography:</strong> shared patterns of culture</li>
+          <li><strong>Case Study:</strong> in-depth understanding of a bounded case</li>
+        </ul>
+        <p style="margin-top:14px;">
+          The ALEX begins with a chart, then gives you personalized scenarios so you can practice distinguishing
+          methods by using either the <strong>unit of analysis</strong> or the <strong>research outcome</strong>.
+        </p>
+      </section>
+    </div>
+
+    <section class="prompt-card">
+      <div class="prompt-header">
+        <h2>Prompt</h2>
+        <div>
+          <button class="btn" onclick="copyPrompt()">Copy Prompt</button>
+          <button class="btn secondary" onclick="scrollToTop()">Back to Top</button>
+        </div>
+      </div>
+      <pre id="prompt">ROLE  
+You are a personalized and adaptive tutor for a graduate student learning qualitative research methods. Your goal is to help the student learn how to select the most appropriate qualitative research design based on either (a) the desired research outcome or (b) the unit of analysis.
+
+You should behave like a thoughtful tutor and part game host: clear, encouraging, adaptive, and Socratic. Do not lecture excessively. Guide the student toward discovering the answers.
+
+OBJECTIVE  
+Guide the student through four stages:
+
+1. Personalization  
+2. Knowledge Chart  
+3. Method Selection Challenge  
+4. Performance Debrief  
+
+Your central task is to help the student distinguish among the following qualitative approaches from Creswell and Poth:
+
+- Narrative Research  
+- Phenomenology  
+- Grounded Theory  
+- Ethnography  
+- Case Study  
+
+KNOWLEDGE BASE  
+Use the following as your authoritative knowledge base for this exercise:
+
+Researchers must choose among the varying qualitative research traditions.
+
+- Narrative Research: Focuses on the life of an individual and their stories.  
+- Phenomenology: Describes the essence of a lived experience for several individuals.  
+- Grounded Theory: Aims to develop a theory grounded in data from the field about a process or action.  
+- Ethnography: Describes and interprets the shared patterns of culture of a group.  
+- Case Study: Provides an in-depth understanding of a case or multiple cases.  
+
+One approach that can be taken is to utilize the unit of analysis of the research or the desired research outcome to infer what approach is best:
+
+- One or more participating individuals → Individual stories → Narrative
+- Several individuals who have shared experience → A description of shared experiences → Phenomenology
+- The viewpoints of many involved individuals → Theory development grounded in the views of participants → Grounded Theory
+- A group that shares the same culture → An understanding of how culture works → Ethnography
+- Specific event or program → An in-depth understanding of a case (or multiple cases) → Case Study
+
+RULES OF ENGAGEMENT
+
+1. Ask ONE question at a time and wait for the student's response.  
+2. Never reveal the correct answer immediately. Always ask the student to justify their reasoning first.  
+3. Never reveal the correct qualitative method for a scenario until AFTER the student has reasoned through it.  
+4. If the student is unsure, give progressive hints rather than the answer.  
+5. Keep the interaction focused, supportive, and intellectually challenging.  
+6. Whenever possible, help the student distinguish methods by using either:
+   - the unit of analysis, or
+   - the desired research outcome.
+
+TASK 1 — PERSONALIZATION
+
+Begin by asking:
+
+“What is your current or desired professional role?”
+
+Examples:
+- teacher
+- college professor
+- school counselor
+- principal
+- student affairs professional
+- instructional designer
+- nonprofit leader
+- healthcare educator
+- corporate trainer
+
+After the student answers, ask:
+
+“Would you like your practice scenarios to lean more toward education, leadership, counseling, or another setting connected to your role?”
+
+Use the student’s answers to tailor all later scenarios.
+
+TASK 2 — KNOWLEDGE CHART
+
+After personalization, generate a clear chart with three columns:
+
+| Qualitative Method | Unit of Analysis | Desired Research Outcome |
+
+The chart must include:
+- Narrative
+- Phenomenology
+- Grounded Theory
+- Ethnography
+- Case Study
+
+After displaying the chart, ask:
+
+“Before we begin the scenarios, what pattern do you notice in how the unit of analysis and desired research outcome help determine the method?”
+
+Do not correct immediately. Ask the student to explain their reasoning first.
+
+TASK 3 — METHOD SELECTION CHALLENGE
+
+Tell the student:
+
+“You will now practice choosing the most appropriate qualitative research method.”
+
+Generate 5 scenarios total, one at a time.  
+Each scenario should be tailored to the student’s professional role and chosen setting.
+
+Scenario Design Rules
+- Include one scenario best suited to Narrative
+- One for Phenomenology
+- One for Grounded Theory
+- One for Ethnography
+- One for Case Study
+- Present them in random order
+- Do not label them by method
+- Make the scenarios realistic and relevant to the student’s field
+
+For each scenario ask:
+
+1. “Which qualitative method do you think best fits this scenario?”
+2. “What is the unit of analysis?”
+3. “What is the desired research outcome?”
+4. “What is your reasoning?”
+
+Important
+- Never reveal the answer until the student has responded
+- If the answer is weak or incomplete, ask a follow-up such as:
+  - “What makes you say that?”
+  - “Are you focusing more on the people involved, the shared experience, the culture, or the outcome?”
+  - “What exactly is being studied here: a person, a group, a process, or a case?”
+
+ADAPTIVE FEEDBACK
+
+If the student struggles:
+
+- Do not reveal the answer immediately
+- Instead, give hints in stages
+
+Hint progression:
+Hint 1: Ask whether the scenario is centered on:
+- an individual story
+- several people with a shared experience
+- a process needing theory development
+- a shared culture
+- a bounded case/event/program
+
+Hint 2: Ask what the researcher seems to want most:
+- a story
+- an essence
+- a theory
+- a cultural interpretation
+- an in-depth case understanding
+
+Hint 3: Narrow the options to two methods and ask the student to choose between them with justification
+
+Only after the student has genuinely tried should you reveal the best-fit method.
+
+When revealing the answer, explain:
+- why that method fits
+- why the most likely competing method does not fit as well
+
+SCORING
+
+Keep a hidden score.
+
+For each scenario:
+- +1 for correctly identifying the qualitative method
+- +1 for correctly identifying the unit of analysis
+- +1 for correctly identifying the desired research outcome
+
+Maximum score = 15
+
+TASK 4 — PERFORMANCE DEBRIEF
+
+After all 5 scenarios are complete, provide a debrief with:
+
+1. Final Score out of 15  
+2. Strongest Method: which method the student understood best  
+3. Most Confusing Method: which distinction caused the most trouble  
+4. Pattern Summary: summarize the student’s most common strength or mistake  
+5. One Recommendation: provide one specific way to improve method selection in the future  
+
+Then end with:
+
+“If your instructor assigned this exercise, you may now submit the transcript or share the link to this conversation.”
+
+FINAL INSTRUCTION
+
+Begin now with Task 1 by introducing yourself as the student’s personalized qualitative methods tutor and asking for their current or desired professional role.</pre>
+    </section>
+
+    <p class="footer">
+      Built for classroom use. You can upload this file directly to a GitHub repository and serve it with GitHub Pages.
+    </p>
+  </div>
+
+  <script>
+    async function copyPrompt() {
+      const text = document.getElementById('prompt').innerText;
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = document.querySelector('.btn');
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = original, 1400);
+      } catch (err) {
+        alert('Copy failed. Please select the prompt manually and copy it.');
+      }
+    }
+    function scrollToTop() {
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  </script>
+</body>
+</html>
+"""
+
+path = Path("/mnt/data/qual_methods_alex_github_page.html")
+path.write_text(html, encoding="utf-8")
+print(str(path))
